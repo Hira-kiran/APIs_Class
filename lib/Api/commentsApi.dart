@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, file_names
+
 import 'dart:convert';
 
 import 'package:apispart/Model/commentModel.dart';
@@ -40,39 +42,39 @@ class _CommentApiState extends State<CommentApi> {
           future: commentApi(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return Center(child: const CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return ListView.builder(
+                  itemCount: commentList.length,
+                  itemBuilder: ((context, index) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(commentList[index].id.toString()),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(commentList[index].postId.toString()),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Card(child: Text(commentList[index].email.toString())),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(commentList[index].name.toString()),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(commentList[index].body.toString()),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    );
+                  }));
             }
-
-            return ListView.builder(
-                itemCount: commentList.length,
-                itemBuilder: ((context, index) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(commentList[index].id.toString()),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(commentList[index].postId.toString()),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Card(child: Text(commentList[index].email.toString())),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(commentList[index].name.toString()),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(commentList[index].body.toString()),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  );
-                }));
           }),
     );
   }

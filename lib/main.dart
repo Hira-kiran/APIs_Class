@@ -1,4 +1,5 @@
 import 'package:apispart/Api/commentsApi.dart';
+import 'package:apispart/Api/users.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: CommentApi(),
+      home: UserApi(),
     );
   }
 }
