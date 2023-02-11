@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:apispart/Model/userModel.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -32,13 +31,13 @@ class _UserApiState extends State<UserApi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("UserAPI"),
+        title: const Text("UserAPI"),
       ),
       body: FutureBuilder(
           future: userApi(),
           builder: ((context, snapshot) {
             if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             } else {
               return ListView.builder(
                   itemCount: userList.length,
@@ -53,3 +52,6 @@ class _UserApiState extends State<UserApi> {
     );
   }
 }
+
+
+// https://thewebconcept.com/hotel2/api/pro_api.php
